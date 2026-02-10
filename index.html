@@ -1,0 +1,2527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercy Chukwuemeka — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        /* ═══════════════════════════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════════════════════════ */
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+        /* ═══════════════════════════════════════════════════════════
+       FONT FAMILIES
+       ═══════════════════════════════════════════════════════════ */
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* ═══════════════════════════════════════════════════════════
+       THEME VARIABLES (LIGHT)
+       ═══════════════════════════════════════════════════════════ */
+        
+         :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #faf8f5;
+            --bg-card: #f9fafb;
+            --bg-card-hover: #f3f4f6;
+            --bg-input: #f9fafb;
+            --bg-nav: rgba(255, 255, 255, 0.85);
+            --bg-footer: #f9fafb;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-muted: #9ca3af;
+            --text-faint: #d1d5db;
+            --border-light: rgba(229, 231, 235, 0.5);
+            --border-card: #f3f4f6;
+            --border-input: #e5e7eb;
+            --green: #008751;
+            --green-dark: #006b40;
+            --orange: #e67e22;
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+            --hero-gradient: linear-gradient(135deg, #fefcf3, #ffffff, #f0f7f0);
+            --scrollbar-track: #f1f1f1;
+            --scrollbar-thumb: #d4a76a;
+            --social-bg: #f3f4f6;
+            --skill-bg: #e5e7eb;
+            --tag-bg: #f3f4f6;
+            --tag-text: #4b5563;
+        }
+        /* ═══════════════════════════════════════════════════════════
+       THEME VARIABLES (DARK)
+       ═══════════════════════════════════════════════════════════ */
+        
+        .dark {
+            --bg-primary: #0f0f23;
+            --bg-secondary: #13132b;
+            --bg-card: rgba(31, 41, 55, 0.3);
+            --bg-card-hover: rgba(31, 41, 55, 0.5);
+            --bg-input: #1f2937;
+            --bg-nav: rgba(15, 15, 35, 0.85);
+            --bg-footer: #0a0a1e;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --text-faint: #374151;
+            --border-light: rgba(55, 65, 81, 0.5);
+            --border-card: rgba(55, 65, 81, 0.5);
+            --border-input: #374151;
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.4);
+            --hero-gradient: linear-gradient(135deg, #0f0f23, #151530, #0f1a0f);
+            --scrollbar-track: #1a1a2e;
+            --social-bg: #1f2937;
+            --skill-bg: #374151;
+            --tag-bg: #1f2937;
+            --tag-text: #9ca3af;
+        }
+        
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        /* ═══════════════════════════════════════════════════════════
+       SCROLLBAR
+       ═══════════════════════════════════════════════════════════ */
+        
+         ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 4px;
+        }
+        /* ═══════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════ */
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: var(--bg-nav);
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.4s ease;
+        }
+        
+        .nav-inner {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+        
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+        }
+        
+        .nav-logo-text span {
+            color: var(--orange);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--orange);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--orange);
+        }
+        /* Theme Toggle */
+        
+        .theme-toggle {
+            position: relative;
+            width: 56px;
+            height: 28px;
+            border-radius: 14px;
+            background: var(--skill-bg);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            transition: background 0.3s ease;
+        }
+        
+        .theme-toggle-knob {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dark .theme-toggle-knob {
+            transform: translateX(28px);
+        }
+        /* Hamburger */
+        
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: var(--text-secondary);
+        }
+        
+        .hamburger svg {
+            display: block;
+        }
+        /* Mobile menu */
+        
+        .mobile-menu {
+            display: none;
+            padding-bottom: 1rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: 4px;
+            padding-top: 0.75rem;
+        }
+        
+        .mobile-menu.open {
+            display: block;
+        }
+        
+        .mobile-link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: background 0.2s, color 0.2s;
+        }
+        
+        .mobile-link:hover {
+            background: var(--bg-card);
+        }
+        
+        .mobile-link.active {
+            background: rgba(230, 126, 34, 0.1);
+            color: var(--orange);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        /* ═══════════════════════════════════════════════════════════
+       SECTIONS (shared)
+       ═══════════════════════════════════════════════════════════ */
+        
+        .section {
+            padding: 5rem 0;
+            transition: background 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease, background 0.4s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .container {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-num {
+            color: var(--orange);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 700;
+            margin-top: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            max-width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.95rem;
+        }
+        
+        .hand-underline {
+            position: relative;
+            display: inline-block;
+            color: var(--green);
+        }
+        
+        .hand-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: -4px;
+            right: -4px;
+            height: 8px;
+            background: currentColor;
+            opacity: 0.15;
+            border-radius: 4px;
+            transform: skewX(-5deg);
+        }
+        /* ═══════════════════════════════════════════════════════════
+       HERO SECTION
+       ═══════════════════════════════════════════════════════════ */
+        
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 64px;
+            background: var(--hero-gradient);
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .hero-text {
+            order: 1;
+        }
+        
+        .hero-photo-wrapper {
+            order: 2;
+            display: flex;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-text {
+                order: 2;
+            }
+            .hero-photo-wrapper {
+                order: 1;
+            }
+        }
+        /* Sticky note */
+        
+        .sticky-note {
+            background: linear-gradient(180deg, #fff9c4 0%, #fff59d 100%);
+            box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
+            transform: rotate(-2deg);
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        
+        .hero-name {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-top: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .hero-name .first-name {
+            color: var(--green);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-name .last-name {
+            color: var(--orange);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .typewriter-wrap {
+            height: 2rem;
+            margin-top: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        
+        .typewriter-text {
+            color: var(--orange);
+        }
+        
+        .cursor-blink::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: var(--orange);
+            font-weight: 300;
+        }
+        
+        @keyframes blink {
+            0%,
+            50% {
+                opacity: 1;
+            }
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        .hero-desc {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            max-width: 30rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--green);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: var(--green-dark);
+            box-shadow: 0 8px 20px rgba(0, 135, 81, 0.25);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border-input);
+            color: var(--text-secondary);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+        
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-row .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+        
+        .social-row .line {
+            width: 60px;
+            height: 1px;
+            background: var(--border-input);
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--social-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--green);
+            color: #fff;
+        }
+        
+        .social-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+        /* Photo */
+        
+        .photo-container {
+            position: relative;
+        }
+        
+        .photo-blob {
+            position: absolute;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: blob 8s ease-in-out infinite;
+        }
+        
+        .photo-blob-1 {
+            top: -2rem;
+            left: -2rem;
+            width: 12rem;
+            height: 12rem;
+            background: rgba(0, 135, 81, 0.1);
+        }
+        
+        .photo-blob-2 {
+            bottom: -2rem;
+            right: -2rem;
+            width: 10rem;
+            height: 10rem;
+            background: rgba(230, 126, 34, 0.1);
+            animation-delay: 2s;
+        }
+        
+        @keyframes blob {
+            0%,
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+            25% {
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            }
+            50% {
+                border-radius: 50% 60% 30% 60% / 30% 50% 70% 60%;
+            }
+            75% {
+                border-radius: 60% 40% 60% 30% / 70% 40% 50% 60%;
+            }
+        }
+        
+        .photo-frame {
+            position: relative;
+            width: 260px;
+            height: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid #d4a76a;
+            box-shadow: 0 0 0 4px #f5f0e1, 0 0 0 6px #d4a76a, 0 8px 30px rgba(0, 0, 0, 0.15);
+            animation: floatY 3s ease-in-out infinite;
+        }
+        
+        @media (min-width: 640px) {
+            .photo-frame {
+                width: 288px;
+                height: 384px;
+            }
+        }
+        
+        @keyframes floatY {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .photo-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4a76a, #c08a3e, #8b6914);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        
+        .badge {
+            position: absolute;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .badge-hire {
+            bottom: -1rem;
+            left: -1rem;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .badge-hire .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse-dot 2s infinite;
+        }
+        
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.3);
+            }
+        }
+        
+        .badge-exp {
+            top: -0.5rem;
+            right: -1rem;
+            background: var(--orange);
+            color: #fff;
+            text-align: center;
+            padding: 0.5rem 0.75rem;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .badge-exp .num {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .badge-exp .lbl {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.9;
+        }
+        
+        .scroll-indicator {
+            text-align: center;
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+        
+        .scroll-indicator svg {
+            animation: bounce 2s infinite;
+            color: var(--text-muted);
+        }
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(6px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .scroll-indicator {
+                display: none;
+            }
+        }
+        /* ═══════════════════════════════════════════════════════════
+       ABOUT SECTION
+       ═══════════════════════════════════════════════════════════ */
+        
+        #about {
+            background: var(--bg-primary);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .about-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+        
+        .about-text p strong {
+            color: var(--text-primary);
+        }
+        
+        .about-text p .green {
+            color: var(--green);
+            font-weight: 600;
+        }
+        
+        .fun-facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .fun-fact {
+            background: linear-gradient(180deg, #fff9c4 0%, #fff59d 100%);
+            box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.12);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .fun-fact:nth-child(1) {
+            transform: rotate(-2deg);
+        }
+        
+        .fun-fact:nth-child(2) {
+            transform: rotate(1deg);
+        }
+        
+        .fun-fact:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+        
+        .quick-info {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-card);
+        }
+        
+        .quick-info h3 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-card);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .info-value {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: right;
+            max-width: 55%;
+        }
+        
+        .btn-resume {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            transition: opacity 0.3s;
+        }
+        
+        .btn-resume:hover {
+            opacity: 0.85;
+        }
+        /* ═══════════════════════════════════════════════════════════
+       ACHIEVEMENTS
+       ═══════════════════════════════════════════════════════════ */
+        
+        #achievements {
+            background: var(--bg-secondary);
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 640px) {
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .cert-wrapper {
+            position: relative;
+        }
+        
+        .cert-wrapper:nth-child(1) {
+            transform: rotate(-1.5deg);
+        }
+        
+        .cert-wrapper:nth-child(2) {
+            transform: rotate(1.2deg);
+        }
+        
+        .cert-wrapper:nth-child(3) {
+            transform: rotate(-0.8deg);
+        }
+        
+        .cert-wrapper:nth-child(4) {
+            transform: rotate(1.5deg);
+        }
+        
+        .cert-wrapper:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+        
+        .cert-wrapper {
+            transition: transform 0.4s ease;
+        }
+        /* Pin */
+        
+        .pin {
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 4px 4px, #ff6b6b, #c0392b);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+        /* Tape */
+        
+        .tape {
+            position: absolute;
+            width: 80px;
+            height: 28px;
+            background: rgba(255, 228, 150, 0.55);
+            z-index: 10;
+        }
+        
+        .tape-left {
+            top: -10px;
+            left: 20px;
+            transform: rotate(-15deg);
+        }
+        
+        .tape-right {
+            top: -10px;
+            right: 20px;
+            transform: rotate(12deg);
+        }
+        /* Certificate paper */
+        
+        .certificate-paper {
+            background: linear-gradient(135deg, #fefcf3 0%, #f5f0e1 25%, #fefcf3 50%, #f5f0e1 75%, #fefcf3 100%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 4px 6px rgba(0, 0, 0, 0.08), inset 0 0 80px rgba(0, 0, 0, 0.03);
+            border: 1px solid #d4c5a0;
+            border-radius: 2px;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .certificate-paper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(0, 0, 0, 0.01) 28px, rgba(0, 0, 0, 0.01) 29px);
+            pointer-events: none;
+        }
+        
+        .cert-inner {
+            border: 2px dashed #c9b896;
+            padding: 1.25rem;
+            border-radius: 2px;
+        }
+        
+        .cert-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .cert-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-ornament .line {
+            width: 2rem;
+            height: 1px;
+            background: #c9b896;
+        }
+        
+        .cert-ornament .seal {
+            font-size: 1.5rem;
+        }
+        
+        .cert-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: #8b7d5e;
+            font-weight: 500;
+        }
+        
+        .cert-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 700;
+            color: #2c1810;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cert-awarded {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8b7d5e;
+        }
+        
+        .cert-name {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #008751;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cert-desc {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #6b5d3e;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .cert-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-top: 0.75rem;
+            border-top: 1px solid #d4c5a0;
+        }
+        
+        .cert-footer .label {
+            font-size: 0.6rem;
+            color: #8b7d5e;
+        }
+        
+        .cert-footer .value {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2c1810;
+        }
+        
+        .cert-id {
+            text-align: center;
+            margin-top: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem;
+            color: #a09070;
+            letter-spacing: 0.1em;
+        }
+        /* ═══════════════════════════════════════════════════════════
+       SKILLS
+       ═══════════════════════════════════════════════════════════ */
+        
+        #skills {
+            background: var(--bg-primary);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 640px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .skill-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-card);
+            transition: border-color 0.3s;
+        }
+        
+        .skill-card:hover {
+            border-color: rgba(230, 126, 34, 0.3);
+        }
+        
+        .skill-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        .skill-card-header .icon {
+            font-size: 1.5rem;
+        }
+        
+        .skill-card-header h3 {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+        
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .skill-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+        
+        .skill-name {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .skill-pct {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--orange);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: var(--skill-bg);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+        
+        .skill-fill {
+            height: 100%;
+            border-radius: 99px;
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+        
+        .skill-fill.green {
+            background: var(--green);
+        }
+        
+        .skill-fill.orange {
+            background: var(--orange);
+        }
+        
+        .skill-fill.blue {
+            background: #3498db;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+        
+        .tech-tags .label {
+            width: 100%;
+            text-align: center;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-tag {
+            padding: 0.375rem 0.75rem;
+            border-radius: 99px;
+            background: var(--tag-bg);
+            font-size: 0.75rem;
+            color: var(--tag-text);
+            font-weight: 500;
+            border: 1px solid var(--border-input);
+        }
+        /* ═══════════════════════════════════════════════════════════
+       PROJECTS
+       ═══════════════════════════════════════════════════════════ */
+        
+        #projects {
+            background: var(--bg-secondary);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-card);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        
+        .project-header {
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-header .bg-icon {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 3.5rem;
+            opacity: 0.2;
+        }
+        
+        .project-header .icon {
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-body {
+            padding: 1.25rem;
+        }
+        
+        .project-body h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .project-card:hover .project-body h3 {
+            color: var(--green);
+        }
+        
+        .project-body p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-tag {
+            padding: 0.125rem 0.5rem;
+            border-radius: 6px;
+            background: var(--tag-bg);
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--tag-text);
+        }
+        
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-card);
+        }
+        
+        .project-link {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--orange);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: text-decoration 0.2s;
+        }
+        
+        .project-link:hover {
+            text-decoration: underline;
+        }
+        
+        .project-gh {
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+        
+        .project-gh:hover {
+            color: var(--text-secondary);
+        }
+        /* ═══════════════════════════════════════════════════════════
+       CONTACT
+       ═══════════════════════════════════════════════════════════ */
+        
+        #contact {
+            background: var(--bg-primary);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        .contact-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            flex-shrink: 0;
+        }
+        
+        .contact-info-item .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+        
+        .contact-info-item .value {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .connect-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
+        .connect-link {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: var(--tag-bg);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+        
+        .connect-link:hover {
+            background: var(--green);
+            color: #fff;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-input);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 2px rgba(0, 135, 81, 0.15);
+        }
+        
+        .form-group textarea {
+            resize: none;
+            min-height: 120px;
+        }
+        
+        .form-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        
+        .btn-send {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 12px;
+            background: var(--green);
+            color: #fff;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-send:hover {
+            background: var(--green-dark);
+            box-shadow: 0 8px 20px rgba(0, 135, 81, 0.25);
+        }
+        
+        .btn-send.sent {
+            background: #22c55e;
+        }
+        /* ═══════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════ */
+        
+        .footer {
+            padding: 2rem 0;
+            background: var(--bg-footer);
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+            transition: background 0.4s;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-logo-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.6rem;
+        }
+        
+        .footer-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .footer .copyright {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+        /* ═══════════════════════════════════════════════════════════
+       PROJECT HEADER GRADIENTS
+       ═══════════════════════════════════════════════════════════ */
+        
+        .grad-green {
+            background: linear-gradient(135deg, #008751, #006040);
+        }
+        
+        .grad-orange {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+        }
+        
+        .grad-emerald {
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+        }
+        
+        .grad-dark {
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
+        }
+        
+        .grad-purple {
+            background: linear-gradient(135deg, #8e44ad, #6c3483);
+        }
+        
+        .grad-red {
+            background: linear-gradient(135deg, #c0392b, #96281b);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <div class="nav-row">
+                <!-- Logo -->
+                <a href="#home" class="nav-logo">
+                    <div class="nav-logo-icon">MC</div>
+                    <div class="nav-logo-text">Chukwuemeka<span>.</span></div>
+                </a>
+
+                <!-- Desktop links -->
+                <div class="nav-links" id="desktopLinks">
+                    <a href="#home" class="nav-link active" data-section="home">Home</a>
+                    <a href="#about" class="nav-link" data-section="about">About</a>
+                    <a href="#achievements" class="nav-link" data-section="achievements">Achievements</a>
+                    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                    <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                    <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+                </div>
+
+                <!-- Right side -->
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <div class="theme-toggle-knob" id="themeKnob">☀️</div>
+          </button>
+                    <button class="hamburger" id="hamburger" aria-label="Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" id="hamburgerIcon">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#home" class="mobile-link active" data-section="home">Home</a>
+                <a href="#about" class="mobile-link" data-section="about">About</a>
+                <a href="#achievements" class="mobile-link" data-section="achievements">Achievements</a>
+                <a href="#skills" class="mobile-link" data-section="skills">Skills</a>
+                <a href="#projects" class="mobile-link" data-section="projects">Projects</a>
+                <a href="#contact" class="mobile-link" data-section="contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       HERO / HOME
+       ═══════════════════════════════════════════════════════════ -->
+    <section id="home" class="section visible">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Text -->
+                <div class="hero-text">
+                    <div class="sticky-note">👋 Hey there! Welcome to my corner of the internet</div>
+
+                    <h1 class="hero-name">
+                        I'm <span class="first-name hand-underline">mercy</span><br />
+                        <span class="last-name">Chukwuemeka</span>
+                    </h1>
+
+                    <div class="typewriter-wrap">
+                        <span>&gt; </span><span class="typewriter-text" id="typewriterText"></span><span class="cursor-blink"></span>
+                    </div>
+
+                    <p class="hero-desc">
+                        Based in Lagos, Nigeria 🇳🇬 — I build things for the web that actually make people's lives easier. Sometimes I break things too, but that's how we learn, abi? 😄
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+              View My Work
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+                        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+                    </div>
+
+                    <div class="social-row">
+                        <span class="label">Find me on</span>
+                        <div class="line"></div>
+                        <a href="#" class="social-icon" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Photo -->
+                <div class="hero-photo-wrapper">
+                    <div class="photo-container">
+                        <div class="photo-blob photo-blob-1"></div>
+                        <div class="photo-blob photo-blob-2"></div>
+
+                        <div class="photo-frame">
+                            <div class="photo-inner">
+                                <img src="mercy.jpeg" alt="Mercy Chukwuemeka" />
+                            </div>
+                        </div>
+
+                        <div class="badge badge-hire">
+                            <div class="dot"></div>
+                            <span>Available for hire</span>
+                        </div>
+                        <div class="badge badge-exp">
+                            <span class="num">5+</span>
+                            <span class="lbl">Years Exp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>Scroll down</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       ABOUT
+       ═══════════════════════════════════════════════════════════ -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">// 01</span>
+                <h2 class="section-title">About <span class="hand-underline">Me</span></h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        My name is <strong>Mercy Chukwuemeka</strong>, and I'm a software developer born and raised in
+                        <span class="green">Lagos, Nigeria</span>. I discovered programming when I was trying to customize my Blogspot page back in secondary school — and honestly, I haven't stopped coding since.
+                    </p>
+                    <p>
+                        I graduated from the University of Lagos with a degree in Computer Science. Since then, I've worked with startups across Africa and remotely with international teams building products that solve real problems — from fintech platforms handling millions
+                        in transactions to EdTech tools helping students across West Africa.
+                    </p>
+                    <p>
+                        When I'm not at my desk debugging some stubborn API, you'll find me at tech meetups in Yaba, mentoring junior developers, or arguing about jollof rice superiority (Nigerian jollof is the best, no debate 🍚).
+                    </p>
+                    <p>
+                        I believe technology can transform Africa, and I'm committed to being part of that story. Every line of code I write is a small step towards building a better digital future for our continent.
+                    </p>
+
+                    <div class="fun-facts">
+                        <div class="fun-fact">☕ Fueled by black coffee</div>
+                        <div class="fun-fact">🎮 FIFA champion (self-proclaimed)</div>
+                        <div class="fun-fact">📚 Reads Chinua Achebe on repeat</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="quick-info">
+                        <h3>Quick Info</h3>
+                        <div class="info-row">
+                            <span class="info-label">Name</span>
+                            <span class="info-value">Mercy Chukwuemeka</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Lagos, Nigeria 🇳🇬</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">mercy.chukwuemeka@email.com</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Education</span>
+                            <span class="info-value">B.Sc Computer Science, UNILAG</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Languages</span>
+                            <span class="info-value">English, Yoruba, Igbo, Pidgin</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Interests</span>
+                            <span class="info-value">Open Source, AI, Fintech</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-resume">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3v12M5 12l7 7 7-7M5 20h14"/>
+            </svg>
+            Download Resume
+          </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       ACHIEVEMENTS
+       ═══════════════════════════════════════════════════════════ -->
+    <section id="achievements" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">// 02</span>
+                <h2 class="section-title">Achievements & <span class="hand-underline">Certifications</span></h2>
+                <p class="section-subtitle">Proof that I actually know what I'm doing (most of the time 😅)</p>
+            </div>
+
+            <div class="cert-grid">
+                <!-- Certificate 1 -->
+                <div class="cert-wrapper">
+                    <div class="pin"></div>
+                    <div class="tape tape-left"></div>
+                    <div class="certificate-paper">
+                        <div class="cert-inner">
+                            <div class="cert-header">
+                                <div class="cert-ornament">
+                                    <div class="line"></div>
+                                    <span class="seal">🏅</span>
+                                    <div class="line"></div>
+                                </div>
+                                <p class="cert-label">Certificate of Completion</p>
+                            </div>
+                            <h3 class="cert-title">AWS Certified Solutions Architect</h3>
+                            <p class="cert-awarded">Awarded to</p>
+                            <p class="cert-name">Mercy Chukwuemeka</p>
+                            <p class="cert-desc">Validated expertise in designing distributed systems on AWS infrastructure.</p>
+                            <div class="cert-footer">
+                                <div>
+                                    <p class="label">Issued by</p>
+                                    <p class="value">Amazon Web Services</p>
+                                </div>
+                                <div style="text-align:right;">
+                                    <p class="label">Date</p>
+                                    <p class="value">March 2023</p>
+                                </div>
+                            </div>
+                            <p class="cert-id">ID: AWS-SAA-2023-0847291</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="cert-wrapper">
+                    <div class="pin"></div>
+                    <div class="tape tape-right"></div>
+                    <div class="certificate-paper">
+                        <div class="cert-inner">
+                            <div class="cert-header">
+                                <div class="cert-ornament">
+                                    <div class="line"></div>
+                                    <span class="seal">🎖️</span>
+                                    <div class="line"></div>
+                                </div>
+                                <p class="cert-label">Certificate of Completion</p>
+                            </div>
+                            <h3 class="cert-title">Meta Front-End Developer Professional Certificate</h3>
+                            <p class="cert-awarded">Awarded to</p>
+                            <p class="cert-name">Mercy Chukwuemeka</p>
+                            <p class="cert-desc">Completed 9-course professional certificate covering React, UX/UI, and advanced JavaScript.</p>
+                            <div class="cert-footer">
+                                <div>
+                                    <p class="label">Issued by</p>
+                                    <p class="value">Meta (via Coursera)</p>
+                                </div>
+                                <div style="text-align:right;">
+                                    <p class="label">Date</p>
+                                    <p class="value">August 2022</p>
+                                </div>
+                            </div>
+                            <p class="cert-id">ID: COURSERA-META-FE-7823K</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="cert-wrapper">
+                    <div class="pin"></div>
+                    <div class="tape tape-left"></div>
+                    <div class="certificate-paper">
+                        <div class="cert-inner">
+                            <div class="cert-header">
+                                <div class="cert-ornament">
+                                    <div class="line"></div>
+                                    <span class="seal">🏆</span>
+                                    <div class="line"></div>
+                                </div>
+                                <p class="cert-label">Certificate of Completion</p>
+                            </div>
+                            <h3 class="cert-title">Google Africa Developer Scholarship</h3>
+                            <p class="cert-awarded">Awarded to</p>
+                            <p class="cert-name">Mercy Chukwuemeka</p>
+                            <p class="cert-desc">Selected among top 1,000 developers across Africa for the Google Africa Developer Scholarship program.</p>
+                            <div class="cert-footer">
+                                <div>
+                                    <p class="label">Issued by</p>
+                                    <p class="value">Google / Andela / Pluralsight</p>
+                                </div>
+                                <div style="text-align:right;">
+                                    <p class="label">Date</p>
+                                    <p class="value">December 2021</p>
+                                </div>
+                            </div>
+                            <p class="cert-id">ID: GADS-2021-NG-04521</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="cert-wrapper">
+                    <div class="pin"></div>
+                    <div class="tape tape-right"></div>
+                    <div class="certificate-paper">
+                        <div class="cert-inner">
+                            <div class="cert-header">
+                                <div class="cert-ornament">
+                                    <div class="line"></div>
+                                    <span class="seal">⭐</span>
+                                    <div class="line"></div>
+                                </div>
+                                <p class="cert-label">Certificate of Completion</p>
+                            </div>
+                            <h3 class="cert-title">HNG Internship — Finalist</h3>
+                            <p class="cert-awarded">Awarded to</p>
+                            <p class="cert-name">Mercy Chukwuemeka</p>
+                            <p class="cert-desc">Completed all stages of the rigorous HNG Internship program, finishing among the top 100 developers out of 12,000+ applicants.</p>
+                            <div class="cert-footer">
+                                <div>
+                                    <p class="label">Issued by</p>
+                                    <p class="value">HNG Tech (Hotels.ng)</p>
+                                </div>
+                                <div style="text-align:right;">
+                                    <p class="label">Date</p>
+                                    <p class="value">September 2022</p>
+                                </div>
+                            </div>
+                            <p class="cert-id">ID: HNG-9-FIN-2247</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       SKILLS
+       ═══════════════════════════════════════════════════════════ -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">// 03</span>
+                <h2 class="section-title">My <span class="hand-underline">Skills</span></h2>
+                <p class="section-subtitle">Tools and technologies I use to bring ideas to life</p>
+            </div>
+
+            <div class="skills-grid" id="skillsGrid">
+                <!-- Frontend -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <span class="icon">🎨</span>
+                        <h3>Frontend</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">React / Next.js</span><span class="skill-pct">92%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill green" data-width="92"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">TypeScript</span><span class="skill-pct">88%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill orange" data-width="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Tailwind CSS</span><span class="skill-pct">95%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill green" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Vue.js</span><span class="skill-pct">70%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill blue" data-width="70"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <span class="icon">⚙️</span>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Node.js / Express</span><span class="skill-pct">90%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill green" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Python / Django</span><span class="skill-pct">78%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill blue" data-width="78"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">PostgreSQL</span><span class="skill-pct">82%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill orange" data-width="82"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">REST & GraphQL APIs</span><span class="skill-pct">85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill orange" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <span class="icon">🛠️</span>
+                        <h3>DevOps & Tools</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Git & GitHub</span><span class="skill-pct">93%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill green" data-width="93"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Docker</span><span class="skill-pct">75%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill blue" data-width="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">AWS / GCP</span><span class="skill-pct">72%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill blue" data-width="72"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">CI/CD Pipelines</span><span class="skill-pct">68%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill blue" data-width="68"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <span class="icon">🤝</span>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Team Leadership</span><span class="skill-pct">88%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill orange" data-width="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Communication</span><span class="skill-pct">90%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill green" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Problem Solving</span><span class="skill-pct">92%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill green" data-width="92"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-labels"><span class="skill-name">Mentoring</span><span class="skill-pct">85%</span></div>
+                        <div class="skill-bar">
+                            <div class="skill-fill orange" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-tags">
+                <div class="label">Also familiar with</div>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">Figma</span>
+                <span class="tech-tag">Jira</span>
+                <span class="tech-tag">Vercel</span>
+                <span class="tech-tag">Supabase</span>
+                <span class="tech-tag">Stripe</span>
+                <span class="tech-tag">Paystack</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       PROJECTS
+       ═══════════════════════════════════════════════════════════ -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">// 04</span>
+                <h2 class="section-title">Featured <span class="hand-underline">Projects</span></h2>
+                <p class="section-subtitle">Things I've built that I'm really proud of</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header grad-green">
+                        <span class="bg-icon">💳</span>
+                        <span class="icon">💳</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>PayNaija</h3>
+                        <p>A fintech dashboard for managing cross-border payments across Africa. Built to handle 50K+ daily transactions with real-time FX rates.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Paystack API</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">
+                View Project
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+              </a>
+                            <a href="#" class="project-gh">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header grad-orange">
+                        <span class="bg-icon">📚</span>
+                        <span class="icon">📚</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>LearnAM</h3>
+                        <p>EdTech platform connecting tutors with students across Nigeria. Features live video classes, assignment tracking, and offline content access.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">TypeScript</span>
+                            <span class="project-tag">Supabase</span>
+                            <span class="project-tag">WebRTC</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">
+                View Project
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+              </a>
+                            <a href="#" class="project-gh">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header grad-emerald">
+                        <span class="bg-icon">🌾</span>
+                        <span class="icon">🌾</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>FarmConnect</h3>
+                        <p>Marketplace connecting smallholder farmers in rural areas directly with urban buyers. Reduced middleman costs by 40% for over 2,000 farmers.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">React Native</span>
+                            <span class="project-tag">Express</span>
+                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Google Maps</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">
+                View Project
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+              </a>
+                            <a href="#" class="project-gh">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-header grad-dark">
+                        <span class="bg-icon">📰</span>
+                        <span class="icon">📰</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>NaijaNews Aggregator</h3>
+                        <p>AI-powered news aggregator that curates and summarizes Nigerian news from 50+ sources. Serves 10K+ daily active users.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">FastAPI</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">OpenAI API</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">
+                View Project
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+              </a>
+                            <a href="#" class="project-gh">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-header grad-purple">
+                        <span class="bg-icon">🚌</span>
+                        <span class="icon">🚌</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>Lagos Transit Tracker</h3>
+                        <p>Real-time BRT and ferry tracking app for Lagos commuters. Uses crowdsourced data to predict arrival times with 85% accuracy.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Firebase</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">Mapbox</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">
+                View Project
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+              </a>
+                            <a href="#" class="project-gh">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-header grad-red">
+                        <span class="bg-icon">👩‍💻</span>
+                        <span class="icon">👩‍💻</span>
+                    </div>
+                    <div class="project-body">
+                        <h3>DevConnect NG</h3>
+                        <p>Open-source community platform for Nigerian developers. Features job board, event listings, and mentorship matching.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Next.js</span>
+                            <span class="project-tag">Prisma</span>
+                            <span class="project-tag">tRPC</span>
+                            <span class="project-tag">Tailwind</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">
+                View Project
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6h8M7 3l3 3-3 3"/></svg>
+              </a>
+                            <a href="#" class="project-gh">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.026 2.747-1.026.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       CONTACT
+       ═══════════════════════════════════════════════════════════ -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">// 05</span>
+                <h2 class="section-title">Get In <span class="hand-underline">Touch</span></h2>
+                <p class="section-subtitle">Got a project in mind? Or just want to say hello? My inbox is always open!</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div>
+                    <div class="sticky-note" style="transform:rotate(-1deg);padding:1rem;margin-bottom:1.5rem;">
+                        <p style="font-size:0.85rem;font-weight:500;color:#555;">"The best way to predict the future is to create it." 💡</p>
+                        <p style="font-size:0.75rem;color:#888;margin-top:0.25rem;">— Peter Drucker</p>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+                        </div>
+                        <div>
+                            <p class="label">Email</p>
+                            <p class="value">emeka.adeyemi@email.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+                        </div>
+                        <div>
+                            <p class="label">Phone</p>
+                            <p class="value">+234 801 234 5678</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+                        </div>
+                        <div>
+                            <p class="label">Location</p>
+                            <p class="value">Yaba, Lagos, Nigeria 🇳🇬</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+                        </div>
+                        <div>
+                            <p class="label">Availability</p>
+                            <p class="value">Mon - Sat</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:1.5rem;">
+                        <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:0.75rem;">Connect with me</p>
+                        <div class="connect-links">
+                            <a href="#" class="connect-link">GitHub</a>
+                            <a href="#" class="connect-link">LinkedIn</a>
+                            <a href="#" class="connect-link">Twitter</a>
+                            <a href="#" class="connect-link">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="e.g. Ada Okafor" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="ada@example.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Tell me about your project, or just say hi..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-send" id="sendBtn">
+              Send Message
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8l12-6-4 14-3-5z"/></svg>
+            </button>
+                    </form>
+                    <p class="form-note">I typically respond within 24 hours. No wahala! 🤙</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">CA</div>
+                <span class="footer-logo-text">Mercy Chukwuemeka</span>
+            </div>
+            <p>Designed & Built with <strong>Portfolio Kingdom</strong> from Lagos, Nigeria</p>
+            <p class="copyright">© <span id="year"></span> All rights reserved. 🇳🇬</p>
+        </div>
+    </footer>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       JAVASCRIPT
+       ═══════════════════════════════════════════════════════════ -->
+    <script>
+        // ── Year ──
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ── Theme Toggle ──
+        const themeToggle = document.getElementById('themeToggle');
+        const themeKnob = document.getElementById('themeKnob');
+        let isDark = false;
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            document.documentElement.classList.toggle('dark', isDark);
+            themeKnob.textContent = isDark ? '🌙' : '☀️';
+        });
+
+        // ── Mobile Menu ──
+        const hamburger = document.getElementById('hamburger');
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let menuOpen = false;
+
+        hamburger.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('open', menuOpen);
+            hamburgerIcon.innerHTML = menuOpen ?
+                '<path d="M6 6l12 12M6 18L18 6" />' :
+                '<path d="M4 6h16M4 12h16M4 18h16" />';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.classList.remove('open');
+                hamburgerIcon.innerHTML = '<path d="M4 6h16M4 12h16M4 18h16" />';
+            });
+        });
+
+        // ── Active Section Tracking ──
+        const sections = ['home', 'about', 'achievements', 'skills', 'projects', 'contact'];
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function updateActiveSection() {
+            let current = 'home';
+            for (const id of sections) {
+                const el = document.getElementById(id);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= 120 && rect.bottom > 120) {
+                        current = id;
+                        break;
+                    }
+                }
+            }
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.section === current);
+            });
+            mobileLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.section === current);
+            });
+        }
+        window.addEventListener('scroll', updateActiveSection, {
+            passive: true
+        });
+
+        // ── Scroll Reveal (Intersection Observer) ──
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Animate skill bars when skills section becomes visible
+                    if (entry.target.id === 'skills') {
+                        document.querySelectorAll('.skill-fill').forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            bar.style.width = width + '%';
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // ── Typewriter Effect ──
+        const titles = ['Full-Stack Developer', 'UI/UX Designer', 'Open Source Contributor'];
+        let titleIdx = 0;
+        let charIdx = 0;
+        let deleting = false;
+        const typewriterEl = document.getElementById('typewriterText');
+
+        function typewrite() {
+            const current = titles[titleIdx];
+            if (!deleting) {
+                if (charIdx < current.length) {
+                    charIdx++;
+                    typewriterEl.textContent = current.substring(0, charIdx);
+                    setTimeout(typewrite, 100);
+                } else {
+                    setTimeout(() => {
+                        deleting = true;
+                        typewrite();
+                    }, 1500);
+                }
+            } else {
+                if (charIdx > 0) {
+                    charIdx--;
+                    typewriterEl.textContent = current.substring(0, charIdx);
+                    setTimeout(typewrite, 50);
+                } else {
+                    deleting = false;
+                    titleIdx = (titleIdx + 1) % titles.length;
+                    setTimeout(typewrite, 300);
+                }
+            }
+        }
+        typewrite();
+
+        // ── Contact Form ──
+        const contactForm = document.getElementById('contactForm');
+        const sendBtn = document.getElementById('sendBtn');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            sendBtn.classList.add('sent');
+            sendBtn.innerHTML = '✅ Message Sent! Thank you!';
+            contactForm.reset();
+
+            setTimeout(() => {
+                sendBtn.classList.remove('sent');
+                sendBtn.innerHTML = 'Send Message <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8l12-6-4 14-3-5z"/></svg>';
+            }, 4000);
+        });
+    </script>
+</body>
+
+</html>
